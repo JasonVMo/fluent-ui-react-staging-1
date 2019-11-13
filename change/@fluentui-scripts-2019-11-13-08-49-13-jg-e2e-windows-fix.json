@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix issues preventing e2e commands from working on Windows targets.",
-  "packageName": "@fluentui/scripts",
-  "email": "jagore@microsoft.com",
-  "commit": "5af651b25a8c087aa32a3f3a5958a74dd75abe87",
-  "date": "2019-11-13T16:49:13.797Z"
-}

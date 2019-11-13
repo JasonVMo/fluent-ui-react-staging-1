@@ -2,6 +2,20 @@
   "name": "@fluentui/scripts",
   "entries": [
     {
+      "date": "Wed, 13 Nov 2019 17:12:47 GMT",
+      "tag": "@fluentui/scripts_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issues preventing e2e commands from working on Windows targets.",
+            "author": "jagore@microsoft.com",
+            "commit": "5af651b25a8c087aa32a3f3a5958a74dd75abe87"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2019 17:40:53 GMT",
       "tag": "@fluentui/scripts_v1.1.3",
       "version": "1.1.3",

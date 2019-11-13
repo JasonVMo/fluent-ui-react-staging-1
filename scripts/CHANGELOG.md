@@ -1,7 +1,13 @@
 # Change Log - @fluentui/scripts
 
-This log was last generated on Tue, 12 Nov 2019 17:40:53 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Nov 2019 17:12:47 GMT and should not be manually modified.
 
+## 1.1.4
+Wed, 13 Nov 2019 17:12:47 GMT
+
+### Patches
+
+- Fix issues preventing e2e commands from working on Windows targets. (jagore@microsoft.com)
 ## 1.1.3
 Tue, 12 Nov 2019 17:40:53 GMT
 
