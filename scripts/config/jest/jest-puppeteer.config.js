@@ -3,7 +3,7 @@ const path = require('path');
 
 const server = {
   command: 'yarn just e2e:server',
-  launchTimeout: 5000,
+  launchTimeout: 10000,
   port: 3456,
   waitOnScheme: {
     delay: 1000
