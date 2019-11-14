@@ -1,7 +1,13 @@
 # Change Log - @fluentui/base
 
-This log was last generated on Mon, 11 Nov 2019 22:17:20 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Nov 2019 22:21:55 GMT and should not be manually modified.
 
+## 0.4.2
+Thu, 14 Nov 2019 22:21:55 GMT
+
+### Patches
+
+- Link: Adding README spec to base components. (Humberto.Morimoto@microsoft.com)
 ## 0.4.1
 Mon, 11 Nov 2019 22:17:20 GMT
 

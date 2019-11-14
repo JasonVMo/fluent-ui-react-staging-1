@@ -2,6 +2,20 @@
   "name": "@fluentui/base",
   "entries": [
     {
+      "date": "Thu, 14 Nov 2019 22:21:55 GMT",
+      "tag": "@fluentui/base_v0.4.2",
+      "version": "0.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link: Adding README spec to base components.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6aa55ce467f180db496c1f01eeb81c0a6d922c0f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2019 22:17:20 GMT",
       "tag": "@fluentui/base_v0.4.1",
       "version": "0.4.1",
