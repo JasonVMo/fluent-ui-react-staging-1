@@ -1,6 +1,6 @@
 # Link component specification
 
-The `Link` component is a clickable control primarily used for navigation, providing an interactive reference to a resource.
+The `Link` component is a clickable control primarily used for navigation, providing an interactive reference to a resource. It is usually displayed as an inline element by default that can wrap text if it goes past the edges of its parent.
 
 ## Related variant considerations
 
@@ -46,21 +46,22 @@ The following section documents links to different UI libraries implementations 
 
 The following section documents the properties that will become part of the new component, as well as the process for mitigating all changes when moving from Fabric and Stardust to Fluent UI.
 
-> TODO: Consult the prop wizard to derive consistently defined props.
-
-| Name | Type | Default value | Description |
-| ---- | ---- | ------------- | ----------- |
-
 ### Recommended component props
 
-| Name        | Type      | Default value | Description                                                                            |
-| ----------- | :-------: | :-----------: | -------------------------------------------------------------------------------------- |
-| `as`        | `string`  |               | Defines a component that should be used as the root element of the `Link`.             |
-| `className` | `string`  |               | Defines an additional classname to provide on the root of the `Link`.                  |
-| `disabled`  | `boolean` | `false`       | Defines whether the `Link` is in an enabled or disabled state.                         |
-| `href`      | `string`  |               | Defines an href that serves as the navigation destination when clicking on the `Link`. |
+| Name              | Type                       | Default value | Required? | Description                                                                            |
+| ----------------- | :------------------------: | :-----------: | :-------: | -------------------------------------------------------------------------------------- |
+| `ariaDescribedBy` | `string`                   |               | No        | Identifies the element (or elements) that describes the object.                        |
+| `ariaHidden`      | `boolean`                  | `false`       | No        | Indicates whether the element is exposed to an accessibility API.                      |
+| `ariaLabel`       | `string`                   |               | No        | Defines a string value that labels the current element.                                |
+| `ariaLabelledBy`  | `string`                   |               | No        | Identifies the element (or elements) that labels the current element.                  |
+| `className`       | `string`                   |               | No        | Defines an additional classname to provide on the root of the `Link`.                  |
+| `componentRef`    | `IRefObject<ILink>`        |               | No        | Defines an optional reference to access the imperative interface of the `Link`.        |
+| `disabled`        | `boolean`                  | `false`       | No        | Defines whether the `Link` is in an enabled or disabled state.                         |
+| `href`            | `string`                   |               | Yes       | Defines an href that serves as the navigation destination when clicking on the `Link`. |
+| `onClick`         | `(ev: MouseEvent) => void` |               | No        | Defines a callback that handles the processing of click events on the `Link`.          |
+| `role`            | `string`                   |               | No        | Defines the accessibility role of the `Link`.                                          |
 
-> TODO: Talk about the inheritance of native props, what should we do about them? `Pick`, `Omit`, get all of them? What do we do about slots? Do we defect to `any`?
+Props no outlined above are not handled and should be spread in the `root` slot of the component.
 
 ### Recommended interface props
 
@@ -86,7 +87,7 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/link
 
 | Name           | Type                                                         | Notes                                                  |
 | -------------- | :----------------------------------------------------------: | ------------------------------------------------------ |
-| `as`           | `string \| React.ComponentClass \| React.StatelessComponent` | Should we restrict the `as` prop to only take strings? |
+| `as`           | `string \| React.ComponentClass \| React.StatelessComponent` | Remove `as` prop in new component.                     |
 | `componentRef` | `IRefObject<ILink>`                                          |                                                        |
 | `disabled`     | `boolean`                                                    |                                                        |
 | `keytipProps`  | `IKeytipProps`                                               | Should be removed until we add `Keytips` in Fluent UI. |
@@ -246,13 +247,23 @@ None.
 
 After looking at all the component libraries above and taking into consideration common patterns the following DOM is recommended.
 
+#### For default links
+
 ```html
-<a class="root" role="link" type="link" href={href}>
+<a class="root" href={href}>
   {children}
 </a>
 ```
 
-> TODO: Discuss what to do about `role="link"` given that it is not needed for the `a` or `button` tags but the inclusion of slots us might force us to add it.
+#### For recomposed links
+
+If the link is recomposed to use another tag that is not `a` for its `root` slot, then `role="link"` should be added to the root. An example using `button` can be read below:
+
+```html
+<button class="root" href={href} role="link">
+  {children}
+</button>
+```
 
 ### Slots
 
@@ -288,7 +299,7 @@ An enabled `Link` communicates interaction by having styling that invite the use
 
 A disabled `Link` is non-interactive, disallowing the user to click/tap on it to navigate through content.
 
-Typically disabled browser elements do now allow focus. This makes the control difficult for a blind user to know about it, or why it's disabled, without scanning the entire page. Therefore it is recommended to allow focus on disabled components and to make them readonly. This means we use `aria-disabled` attributes, and not `disabled` attributes, for defining a disabled state. This may sometimes require special attention to ignoring input events in the case a browser element might do something. In the past we've introduced an `allowDisabledFocus` prop for component users to control this behavior.
+Typically disabled browser elements do now allow focus. This makes the control difficult for a blind user to know about it, or why it's disabled, without scanning the entire page. Therefore it is recommended to allow focus on disabled components and to make them readonly. This means we use `ariaDisabled` attributes, and not `disabled` attributes, for defining a disabled state. This may sometimes require special attention to ignoring input events in the case a browser element might do something. In the past we've introduced an `allowDisabledFocus` prop for component users to control this behavior.
 
 #### Hovered state
 
@@ -296,7 +307,7 @@ A hovered `Link` changes styling to communicate that the user has placed a curso
 
 #### Focused state
 
-A focused `Link` changes styling to communicate that the user has placed keyboard focus on it. This styling is usually the same to the one in the hovered state.
+A focused `Link` changes styling to communicate that the user has placed keyboard focus on it. This styling is usually the same to the one in the hovered state plus extra styling on the outline to indicate keyboard focus has been placed on the component.
 
 #### States that need discussion
 
@@ -328,13 +339,13 @@ The same behavior as above translated for touch events. This means that there is
 
 #### `root`:
 
-- Should render the native element using the `as` prop, defaulting to a native `a` element, or a native `button` element if the `href` prop has not been set.
-- Should mix in the native props expected for the `button` or `a` native elements depending on if the `href` prop has been set.
+- Should default to render a native `a` element unless another `root` slot has been specified.
+- Should mix in the native props expected for the `a` native element.
 - Should be keyboard tabbable and focusable.
 
 #### Accessibility concerns for the user.
 
-The `aria-label`, `aria-labelledby` and `aria-describedby` properties are surfaced to the component interface but are required to be set by the component user to meet accessibility requirements.
+The `ariaLabel`, `ariaLabelledby` and `ariaDescribedBy` properties are surfaced to the component interface but are required to be set by the component user to meet accessibility requirements.
 
 ## Themability and customization
 
@@ -372,18 +383,26 @@ render () {
 >
 > Common states: `hovered`, `pressed`, `focused`, `checked`, `checkedHovered`, `disabled`
 
-| Name                      | Considerations |
-| ------------------------- | -------------- |
-| `backgroundColor`         |                |
-| `backgroundColorDisabled` |                |
-| `backgroundColorHovered`  |                |
-| `color`                   |                |
-| `colorDisabled`           |                |
-| `colorHovered`            |                |
-| `fontFamily`              |                |
-| `fontSize`                |                |
-| `fontWeight`              |                |
-| `textDecoration`          |                |
+| Name                     | Considerations |
+| ------------------------ | -------------- |
+| `background`             |                |
+| `backgroundDisabled`     |                |
+| `backgroundHovered`      |                |
+| `backgroundPressed`      |                |
+| `backgroundVisited`      |                |
+| `color`                  |                |
+| `colorDisabled`          |                |
+| `colorHovered`           |                |
+| `colorPressed`           |                |
+| `colorVisited`           |                |
+| `fontFamily`             |                |
+| `fontSize`               |                |
+| `fontWeight`             |                |
+| `textDecoration`         |                |
+| `textDecorationDisabled` |                |
+| `textDecorationHovered`  |                |
+| `textDecorationPressed`  |                |
+| `textDecorationVisited`  |                |
 
 ### To be discussed
 
