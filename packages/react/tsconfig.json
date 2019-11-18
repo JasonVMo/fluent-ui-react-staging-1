@@ -16,9 +16,6 @@
   ],
   "references": [
     {
-      "path": "../base/tsconfig.json"
-    },
-    {
       "path": "../native-compose/tsconfig.json"
     },
     {

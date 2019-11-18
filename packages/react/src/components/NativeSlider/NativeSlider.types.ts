@@ -1,5 +1,5 @@
 import { ISliderSlotProps } from "./NativeSlider.base";
-import { ISliderProps } from "@fluentui/base";
+import { ISliderProps } from "./../Slider/Slider.types";
 
 export interface INativeSliderTokens {
   disabled?: boolean;

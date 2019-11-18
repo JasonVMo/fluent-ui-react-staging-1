@@ -2,8 +2,8 @@ import React from "react";
 import { Slider } from "./Slider";
 import { ISliderTokens } from "./Slider.tokens";
 import { ThemeProvider, ITheme, createTheme } from "@fluentui/react-theming";
-import { number } from "prop-types";
-import { Box } from "@fluentui/react-theming";
+import { SliderBase } from "./Slider.base";
+
 export default {
   component: "Slider",
   title: "Slider"
@@ -138,4 +138,8 @@ export const teamsLightSlider = (p: React.HTMLAttributes<any>) => (
   <ThemeProvider theme={teamsLight}>
     <Slider defaultValue={50} />
   </ThemeProvider>
+);
+
+export const aTypicalSlider = () => (
+  <SliderBase min={0} max={10} defaultValue={5} />
 );
