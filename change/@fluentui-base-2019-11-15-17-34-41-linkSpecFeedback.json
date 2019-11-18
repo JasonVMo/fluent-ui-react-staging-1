@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Link: Addressing feedback from spec review.",
-  "packageName": "@fluentui/base",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "8d88626b3309fea952485db0c556288d12cc899d",
-  "date": "2019-11-16T01:34:41.145Z"
-}

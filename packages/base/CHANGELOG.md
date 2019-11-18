@@ -1,7 +1,13 @@
 # Change Log - @fluentui/base
 
-This log was last generated on Thu, 14 Nov 2019 22:21:55 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2019 18:16:34 GMT and should not be manually modified.
 
+## 0.4.3
+Mon, 18 Nov 2019 18:16:34 GMT
+
+### Patches
+
+- Link: Addressing feedback from spec review. (Humberto.Morimoto@microsoft.com)
 ## 0.4.2
 Thu, 14 Nov 2019 22:21:55 GMT
 

@@ -2,6 +2,20 @@
   "name": "@fluentui/base",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2019 18:16:34 GMT",
+      "tag": "@fluentui/base_v0.4.3",
+      "version": "0.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link: Addressing feedback from spec review.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8d88626b3309fea952485db0c556288d12cc899d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Nov 2019 22:21:55 GMT",
       "tag": "@fluentui/base_v0.4.2",
       "version": "0.4.2",
