@@ -19,7 +19,7 @@ export function autoProjectRefsVerifyTask() {
   const updatedTsconfigs = getUpdatedTsconfigs();
   if (updatedTsconfigs.size > 0) {
     throw new Error(
-      `There are differences between package.json dependencies and these project tsconfig.json files: [${Object.keys(updatedTsconfigs)}]`
+      `There are differences between package.json dependencies and these project tsconfig.json files: [${Array.from(updatedTsconfigs.keys())}]`
     );
   }
 }

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Making autoProjectRefsTask output list of tsconfig.json files.",
+  "packageName": "@fluentui/scripts",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "677a16aab5c5423a4c3c585e89f03221ccbf9d7e",
+  "date": "2019-11-19T19:20:42.185Z"
+}
