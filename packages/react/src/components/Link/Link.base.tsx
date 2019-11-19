@@ -1,11 +1,12 @@
 import * as React from "react";
+import { ForwardRefComponent } from "@fluentui/react-theming";
 import { ILinkProps, ILinkSlots } from "./Link.types";
 import { useLink } from "./useLink";
 
-export const LinkBase = React.forwardRef((props: ILinkProps, componentRef: React.Ref<HTMLElement>) => {
-  const { children, href, slots } = props;
+export const LinkBase: ForwardRefComponent<ILinkProps, HTMLElement> = React.forwardRef((props: ILinkProps, componentRef: React.Ref<HTMLElement>) => {
+  const { children, slots } = props;
     const {
-        root: Root = href ? 'a' : 'button'
+        root: Root = 'a'
       } = slots || ({} as ILinkSlots);
 
     const { slotProps = {} } = useLink({ ...props, componentRef });

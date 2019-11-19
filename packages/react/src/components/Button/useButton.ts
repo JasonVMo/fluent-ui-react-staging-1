@@ -1,6 +1,5 @@
-import { useImperativeHandle, useRef } from "react";
-import { mergeSlotProps } from "@fluentui/react-theming";
-import { IStateProps } from "../../utilities/Slots.types";
+import React from "react";
+import { mergeSlotProps, IStateProps } from "@fluentui/react-theming";
 import { IButtonProps } from "./Button.types";
 
 export interface IButtonState {
@@ -11,9 +10,9 @@ export interface IButtonState {
 const useButtonState = (userProps: IStateProps<IButtonProps>): IButtonState => {
   const { componentRef, disabled, onClick } = userProps;
 
-  const rootRef = useRef<HTMLElement>(null);
+  const rootRef = React.useRef<HTMLElement>(null);
 
-  useImperativeHandle(componentRef, () => ({
+  React.useImperativeHandle(componentRef, () => ({
     focus: () => {
       rootRef.current && rootRef.current.focus();
     }

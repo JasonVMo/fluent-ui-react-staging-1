@@ -1,13 +1,14 @@
 import React from "react";
+import { ForwardRefComponent } from "@fluentui/react-theming";
 import { IButtonProps, IButtonSlots } from "./Button.types";
 import { useButton } from "./useButton";
 
-export const ButtonBase = React.forwardRef((props: IButtonProps, componentRef: React.Ref<HTMLElement>) => {
+export const ButtonBase: ForwardRefComponent<IButtonProps, HTMLElement> = React.forwardRef((props: IButtonProps, componentRef: React.Ref<HTMLElement>) => {
     const { children, href, slots } = props;
     const {
-        endIcon: EndIcon = "i",
         root: Root = href ? 'a' : 'button',
-        startIcon: StartIcon = "i"
+        startIcon: StartIcon = 'span',
+        endIcon: EndIcon = 'span'
     } = slots || ({} as IButtonSlots);
 
     const { slotProps = {} } = useButton({ ...props, componentRef });

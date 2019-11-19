@@ -17,12 +17,19 @@ export interface Composeable {
   slots?: any;
 }
 
+/** Defines a helper type for components using forwardRef. */
+export type ForwardRefComponent<TProps, TElement> = React.FunctionComponent<TProps & React.RefAttributes<TElement>>;
+
 interface ComposedFunctionComponent<TProps> extends React.FunctionComponent<TProps> { 
   __optionsSet?: ComposeOptions[];
   __directRender?: React.FunctionComponent<TProps>;
+
+  // Needed for components using forwardRef (See https://github.com/facebook/react/issues/12453).
+  render?: React.FunctionComponent<TProps>;
 }
 
-/** _composeFactory returns a compose function.
+/**
+ * _composeFactory returns a compose function.
  * This allows tests to override aspects of compose.
  *
  * @internal
@@ -37,7 +44,7 @@ export const _composeFactory = (useThemeHook: any = useTheme) => {
     
     const componentName = options.name || "WARNING-UNNAMED";
 
-    const renderFn = baseComponent.__directRender || baseComponent;
+    const renderFn = baseComponent.__directRender || baseComponent.render || baseComponent;
     const Component: ComposedFunctionComponent<TProps> = (props: TProps) => {
       const theme: ITheme = useThemeHook();
       const slots = resolveSlots(componentName, optionsSet, theme);
@@ -62,7 +69,7 @@ export const _composeFactory = (useThemeHook: any = useTheme) => {
     Component.propTypes = baseComponent.propTypes;
 
     Component.__optionsSet = optionsSet;
-    Component.__directRender = baseComponent.__directRender || baseComponent;
+    Component.__directRender = renderFn;
 
     Component.displayName = options.name || "Composed Component";
 

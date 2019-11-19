@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Enforcing typings of ButtonBase and LinkBase and adding index files per component.",
+  "packageName": "@fluentui/base",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "9fc7e7c5f0913e9e40bb6fbf3d6e293ee5d66906",
+  "date": "2019-11-15T00:28:46.933Z"
+}

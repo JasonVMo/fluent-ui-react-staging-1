@@ -16,18 +16,16 @@ describe('LinkBase', () => {
       </div>
     );
 
-    const anchors = wrapper.getDOMNode().querySelectorAll('a') as NodeListOf<HTMLAnchorElement>;
-    const buttons = wrapper.getDOMNode().querySelectorAll('button') as NodeListOf<HTMLButtonElement>;
-    expect(anchors.length).toEqual(2);
-    expect(buttons.length).toEqual(1);
+    const links = wrapper.getDOMNode().querySelectorAll('a') as NodeListOf<HTMLAnchorElement>;
+    expect(links.length).toEqual(3);
 
     link1.current!.focus();
-    expect(document.activeElement!).toBe(anchors[0]);
+    expect(document.activeElement!).toBe(links[0]);
 
     link2.current!.focus();
-    expect(document.activeElement!).toBe(anchors[1]);
+    expect(document.activeElement!).toBe(links[1]);
 
     link3.current!.focus();
-    expect(document.activeElement!).toBe(buttons[0]);
+    expect(document.activeElement!).toBe(links[2]);
   });
 });

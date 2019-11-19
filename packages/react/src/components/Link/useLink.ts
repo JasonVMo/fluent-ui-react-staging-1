@@ -1,41 +1,56 @@
-import { useImperativeHandle, useRef } from "react";
-import { mergeSlotProps } from "@fluentui/react-theming";
-import { IStateProps } from "../../utilities/Slots.types";
+import React from "react";
+import cx from "classnames";
+import { mergeSlotProps, IStateProps } from "@fluentui/react-theming";
 import { ILinkProps } from "./Link.types";
 
 export interface ILinkState {
+  onKeyDown: (ev: KeyboardEvent) => void;
   rootRef: React.Ref<Element>;
 }
 
 const useLinkState = (userProps: IStateProps<ILinkProps>): ILinkState => {
-  const { componentRef } = userProps;
+  const { componentRef, disabled } = userProps;
   
-  const rootRef = useRef<HTMLElement>(null);
+  const rootRef = React.useRef<HTMLElement>(null);
 
-  useImperativeHandle(componentRef, () => ({
+  React.useImperativeHandle(componentRef, () => ({
     focus: () => {
       rootRef.current && rootRef.current.focus();
     }
   }));
 
-  return { 
+  const onKeyDown = (ev: KeyboardEvent) => {
+    // If the Link is disabled we need to prevent navigation via 'Enter' key presses.
+    if (disabled) {
+      ev.preventDefault();
+    }
+  }
+
+  return {
+    onKeyDown,
     rootRef
   };
 };
 
 export const useLink = (props: IStateProps<ILinkProps>) => {
-  const { disabled, href } = props;
+  const { classes = {}, disabled, href } = props;
+  const { rootDisabled } = classes;
 
   const state = useLinkState(props);
-  const { rootRef } = state;
+  const { onKeyDown, rootRef } = state;
 
   const slotProps = mergeSlotProps(props, {
     root: {
       "aria-disabled": disabled,
+      className: cx(
+        disabled && rootDisabled
+      ),
       href,
+      onKeyDown,
       ref: rootRef,
       role: "link",
-      type: href ? "link" : "button"
+      tabIndex: 0,
+      type: "link"
     }
   })
 

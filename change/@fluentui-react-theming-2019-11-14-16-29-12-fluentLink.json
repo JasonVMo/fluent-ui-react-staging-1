@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Modifying compose to take in Functional Components where forwardRef was used.",
+  "packageName": "@fluentui/react-theming",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "9fc7e7c5f0913e9e40bb6fbf3d6e293ee5d66906",
+  "date": "2019-11-15T00:29:05.580Z"
+}
