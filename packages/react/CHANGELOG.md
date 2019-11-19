@@ -1,7 +1,13 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 12 Nov 2019 17:40:53 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Nov 2019 21:24:06 GMT and should not be manually modified.
 
+## 0.3.0
+Tue, 19 Nov 2019 21:24:06 GMT
+
+### Minor changes
+
+- Link: Building first version of Fluent Link using composed. (Humberto.Morimoto@microsoft.com)
 ## 0.2.1
 Tue, 12 Nov 2019 17:40:53 GMT
 

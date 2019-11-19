@@ -2,6 +2,20 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 19 Nov 2019 21:24:06 GMT",
+      "tag": "@fluentui/react_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Link: Building first version of Fluent Link using composed.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9fc7e7c5f0913e9e40bb6fbf3d6e293ee5d66906"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2019 17:40:53 GMT",
       "tag": "@fluentui/react_v0.2.1",
       "version": "0.2.1",

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Link: Building first version of Fluent Link using composed.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "9fc7e7c5f0913e9e40bb6fbf3d6e293ee5d66906",
-  "date": "2019-11-15T00:29:12.754Z"
-}

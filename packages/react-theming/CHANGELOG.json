@@ -2,6 +2,20 @@
   "name": "@fluentui/react-theming",
   "entries": [
     {
+      "date": "Tue, 19 Nov 2019 21:24:06 GMT",
+      "tag": "@fluentui/react-theming_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Modifying compose to take in Functional Components where forwardRef was used.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9fc7e7c5f0913e9e40bb6fbf3d6e293ee5d66906"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2019 18:48:52 GMT",
       "tag": "@fluentui/react-theming_v0.1.3",
       "version": "0.1.3",
