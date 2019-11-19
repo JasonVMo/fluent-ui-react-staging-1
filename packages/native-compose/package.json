@@ -37,7 +37,7 @@
     "@uifabricshared/foundation-composable": "0.2.3"
   },
   "devDependencies": {
-    "@fluentui/scripts": "1.1.4",
+    "@fluentui/scripts": "1.1.5",
     "@types/jss": "^9.5.8",
     "@types/react": "^16.9.2",
     "@fluentui/react-theming": "^0.1.3",

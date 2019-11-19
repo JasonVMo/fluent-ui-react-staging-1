@@ -1,7 +1,13 @@
 # Change Log - @fluentui/scripts
 
-This log was last generated on Wed, 13 Nov 2019 17:12:47 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Nov 2019 20:14:27 GMT and should not be manually modified.
 
+## 1.1.5
+Tue, 19 Nov 2019 20:14:27 GMT
+
+### Patches
+
+- Making autoProjectRefsTask output list of tsconfig.json files. (Humberto.Morimoto@microsoft.com)
 ## 1.1.4
 Wed, 13 Nov 2019 17:12:47 GMT
 
